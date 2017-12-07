@@ -10,7 +10,6 @@ class Admin::CategoriesController < ApplicationController
   
   def create
     @category = Category.create(category_param)
-    @category.errors.messages
     
     if @category.save
       redirect_to [:admin, :categories], notice: 'Product created!'
