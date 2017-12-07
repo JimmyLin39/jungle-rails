@@ -6,10 +6,12 @@ class Admin::CategoriesController < ApplicationController
   def new
     @category = Category.new
   end
-
+  # include ActiveModel::Validations
+  
   def create
-    @category = Category.new(category_param)
-
+    @category = Category.create(category_param)
+    @category.errors.messages
+    
     if @category.save
       redirect_to [:admin, :categories], notice: 'Product created!'
     else
@@ -22,4 +24,8 @@ class Admin::CategoriesController < ApplicationController
       :name
     )
   end
+end
+
+class Category < ActiveRecord::Base
+  validates :name, presence: true
 end
