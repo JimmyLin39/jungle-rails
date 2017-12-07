@@ -6,7 +6,6 @@ class Admin::CategoriesController < ApplicationController
   def new
     @category = Category.new
   end
-  # include ActiveModel::Validations
   
   def create
     @category = Category.create(category_param)
