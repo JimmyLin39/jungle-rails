@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'sessions#new'
+  root to: 'products#index'
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
