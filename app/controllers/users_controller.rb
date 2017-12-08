@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    # @users = User.where(user_param.email == User.email, user_param.password == User.password )
-  end
-
   def show
   end
 
@@ -11,16 +7,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_param)
+    @user = User.create(user_params)
     
     if @user.save
+      session[:user_id] = @user.id
       redirect_to [:products], notice: 'Account created!'
     else
-      render :new
+      redirect_to '/signup'
     end
   end
 
-  def user_param
+  def user_params
     params.require(:user).permit(
       :first_name,
       :last_name,
