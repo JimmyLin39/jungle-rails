@@ -5,9 +5,32 @@
   </head>
   <body>
     <h1>Here is your recent oreder#<%= @order.id %> receipt </h1>
-    <p>
-      Your order is on the way
-    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_total = 0 %>
+        <% @order.line_items.each do |line_item| %>
+          <%= render 'item', line_item: line_item %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order_total %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
     <p>Thanks for purchasing and have a great day!</p>
   </body>
 </html>
