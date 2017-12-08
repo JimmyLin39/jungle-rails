@@ -1,8 +1,9 @@
 class UserMailer < ApplicationMailer
   default from: 'no-reply@jungle.comm'
   
-  def receipt_email(order)
+  def receipt_email(user, order)
     @order = order
-    mail(to: 'a@example.com', subject: "Here is your recent order# #{@order.id} receipt")
+    @user = User.find(user)
+    mail(to: @user.email, subject: "Here is your recent order# #{@order.id} receipt")
   end
 end

@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     if order.valid?
       empty_cart!
       # Tell the UserMailer to send a receipt email after completed order
-      UserMailer.receipt_email(order).deliver_later
+      UserMailer.receipt_email(session[:user_id],order).deliver_later
       redirect_to order, notice: 'Your Order has been placed.'         
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
