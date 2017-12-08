@@ -11,13 +11,15 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
+      # Tell the UserMailer to send a receipt email after completed order
+      UserMailer.receipt_email(order).deliver_later
+      redirect_to order, notice: 'Your Order has been placed.'         
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
 
-  rescue Stripe::CardError => e
-    redirect_to cart_path, flash: { error: e.message }
+    rescue Stripe::CardError => e
+      redirect_to cart_path, flash: { error: e.message }
   end
 
   private
