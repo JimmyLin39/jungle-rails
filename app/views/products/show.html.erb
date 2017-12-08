@@ -41,6 +41,24 @@
             <%= review.rating %>
           </dd>
           <% end %>
+          <br>
+          <dd>
+          <%= form_for([@product, @review]) do |f| %>
+            <div class="field">
+              <%= f.label :rating %><br>
+              <%= f.text_field :rating %>
+            </div>
+            <div class="field">
+              <%= f.label :description %><br>
+              <%= f.text_field :description %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+          </dd>
+
+
         </dl>
       </div>
 
