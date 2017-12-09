@@ -31,7 +31,7 @@
           <dd></dd>
           <% @product.reviews.each do |review|  %>
           <dt>
-            user <%= review.user_id %>:
+            <%= User.find(review.user_id).first_name %>:
           </dt>
           <dd>
             <%= review.description %>
@@ -43,10 +43,11 @@
           <% end %>
           <br>
           <dd>
+          <h4>New Review</h4>
           <%= form_for([@product, @review]) do |f| %>
             <div class="field">
               <%= f.label :rating %><br>
-              <%= f.text_field :rating %>
+              <%= f.select :rating, (1..5) %>
             </div>
             <div class="field">
               <%= f.label :description %><br>
