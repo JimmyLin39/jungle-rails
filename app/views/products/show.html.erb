@@ -40,6 +40,9 @@
             <b>rating:</b>
             <%= review.rating %>
           </dd>
+          <dd>
+          <%= link_to 'DELETE', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </dd>
           <% end %>
           <br>
           <dd>

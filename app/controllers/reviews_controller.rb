@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authorize  
+  before_action :set_review, only: [:destroy]
   
   def create
     @review = Review.new(review_params)
@@ -15,6 +16,11 @@ class ReviewsController < ApplicationController
       # What has to change to make it work?
       render @product
     end
+  end
+
+  def destroy
+    @review.destroy
+    redirect_to @review.product, notice: 'Comment successfully deleted'
   end
 
   private
