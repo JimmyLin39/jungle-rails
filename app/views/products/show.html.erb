@@ -30,19 +30,21 @@
           <dt>Reviews</dt>
           <dd></dd>
           <% @product.reviews.each do |review|  %>
-          <dt>
-            <%= User.find(review.user_id).first_name %>:
-          </dt>
-          <dd>
-            <%= review.description %>
-          </dd>
-          <dd>
-            <b>rating:</b>
-            <%= review.rating %>
-          </dd>
-          <dd>
-          <%= link_to 'DELETE', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </dd>
+            <dt>
+              <%= User.find(review.user_id).first_name %>:
+            </dt>
+            <dd>
+              <%= review.description %>
+            </dd>
+            <dd>
+              <b>rating:</b>
+              <%= review.rating %>
+            </dd>
+            <% if review.user_id == current_user.id %>
+              <dd>
+              <%= link_to 'DELETE', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </dd>
+            <% end %>
           <% end %>
           <br>
           <dd>
