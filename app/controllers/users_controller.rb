@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     
     if @user.save
       session[:user_id] = @user.id
-      redirect_to [:products], notice: 'Account created!'
+      redirect_to :products, notice: 'Account created!'
     else
-      redirect_to '/signup'
+      render 'new'
     end
   end
 
@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :password
+      :password,
+      :password_confirmation
     )
   end
 end
