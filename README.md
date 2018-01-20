@@ -25,3 +25,8 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+## Screenshots
+
+![Screenshot of home page](https://raw.githubusercontent.com/JimmyLin39/jungle-rails/master/screenshot/home.png)
+![Screenshot of cart page](https://raw.githubusercontent.com/JimmyLin39/jungle-rails/master/screenshot/cart.png)
